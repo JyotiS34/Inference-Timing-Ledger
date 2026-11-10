@@ -121,9 +121,9 @@ the column**.
 
 ### 9 · Free text
 
-| Column | Type | Required | Notes |
-|---|---|---|---|
-| `notes` | string | no | anything unusual about the run |
+| Column | Type | Notes |
+|---|---|---|
+| `notes` | string | anything unusual about the run |
 
 ### Coverage of the requested fields
 
