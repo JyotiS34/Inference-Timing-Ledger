@@ -16,7 +16,8 @@ Exit codes:
 The validator is dependency-free and runs on Python 3.8+ (standard library only),
 so it can be used locally or in CI without any installation step.
 
-Author:      Jyotirmoy Saikia <jyotirmoysaikia05153@gmail.com>
+Author_Name: Jyotirmoy Saikia 
+Author_Email: jyotirmoysaikia05153@gmail.com
 Attribution: "Jyotirmoy Saikia: inference timing ledger"
 License:     MIT
 """
