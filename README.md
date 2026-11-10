@@ -198,7 +198,15 @@ mix prefill and decode — compare only like with like.
 ## The validator
 
 Implements **20 error checks** (validation fails) and **17 warning checks**
-(data-quality nudge); the invalid fixture in `examples/` exercises them.
+(data-quality nudge); the tables below list every rule.
+
+The invalid fixture in `examples/` triggers all 14 row-level error checks and
+15 of the 17 warning checks (it happens not to trip `W_CUDA_UNEXPECTED` or
+`W_RECOMMENDED_EMPTY`). The six error checks it cannot trigger are file- or
+header-level (`E_UNREADABLE`, `E_EMPTY_FILE`, `E_CSV_PARSE`,
+`E_DUPLICATE_COLUMN`, `E_MISSING_COLUMN`, `E_UNKNOWN_COLUMN`): the validator
+stops right after a broken header, so a single fixture can never demonstrate
+both the header-level and the row-level rules.
 
 ```console
 $ python3 validate_ledger.py <ledger.csv> [--strict] [--json]
@@ -264,12 +272,14 @@ ERROR  row 1 (fixture-bad-enum-01).precision: 'float16' is not an allowed value 
 ERROR  row 3 (fixture-latency-order-03).latency_ms_p90: latency_ms_p50 (841.5) must be <= latency_ms_p90 (780.0)  [E_LATENCY_ORDER]
 ERROR  row 7 (fixture-memory-exceeds-07).peak_memory_mb: peak_memory_mb (40000.0 MB) exceeds device_memory_total_gb (24.0 GB = 24576 MB)  [E_MEMORY_EXCEEDS_TOTAL]
 WARN   row 13 (fixture-sync-warnings-13).sync_method: sync_method 'host_timer_only' on a gpu: ...  [W_SYNC_MISMATCH]
-... (full list in the run output; 16 errors and 17 warnings in total, one or more for every rule above)
+... (full list in the run output; 16 errors and 17 warnings in total, covering all 14 row-level error rules and 15 of the 17 warning rules)
 result: INVALID - 16 error(s), 17 warning(s)
 ```
 
 CI (`.github/workflows/ci.yml`) re-runs both checks on every push: the template must
-pass `--strict`, and the validator must reject the invalid fixture.
+pass `--strict`, and the validator must reject the invalid fixture **with the expected
+16 errors and 17 warnings** (asserted via `--json`), so a silently weakened fixture or
+validator cannot slip through.
 
 ## About the synthetic example rows
 
