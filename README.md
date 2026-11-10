@@ -269,7 +269,9 @@ result: INVALID - 16 error(s), 17 warning(s)
 ```
 
 CI (`.github/workflows/ci.yml`) re-runs both checks on every push: the template must
-pass `--strict`, and the validator must reject the invalid fixture.
+pass `--strict`, and the validator must reject the invalid fixture **with the expected
+16 errors and 17 warnings** (asserted via `--json`), so a silently weakened fixture or
+validator cannot slip through.
 
 ## About the synthetic example rows
 
