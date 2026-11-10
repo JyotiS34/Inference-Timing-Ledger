@@ -3,7 +3,7 @@
 A dependency-free CSV schema and validator for recording, exchanging, and sanity-checking
 LLM inference timing measurements. Reference model: **Qwen/Qwen2.5-0.5B-Instruct**.
 
-|
+|  |  |
 |---|---|
 | **Author** | Jyotirmoy Saikia — jyotirmoysaikia05153@gmail.com |
 | **Attribution** | "Jyotirmoy Saikia: inference timing ledger" |
