@@ -10,7 +10,7 @@ LLM inference timing measurements. Reference model: **Qwen/Qwen2.5-0.5B-Instruct
 | **Schema version** | 1.0 |
 | **Validator** | `validate_ledger.py` — Python 3.8+, standard library only |
 | **License** | MIT |
-| **Built with** | Z.ai(Ziphu AI |
+| **Built with** | Z.ai(Ziphu AI) |
 
 ## Contents
 
